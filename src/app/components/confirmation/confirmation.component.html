@@ -1,0 +1,19 @@
+<div class="title" *ngIf="model && model.title" [innerHTML]="model.title"></div>
+<div class="body">
+    <div style="text-align: center;">
+        <img *ngIf="!model.imageUrl" class="delete-img" src="assets/white-delete.png">
+    </div>
+    <div class="content mx-4"
+        [innerHTML]="(model && model.content ? model.content : 'Bu harcamayı silmek istediğinizden emin misiniz? ')">
+    </div>
+    <div class="btn-wrapper">
+        <button class="secondary cancel-btn" (click)="confirm.emit(false)">
+            <span *ngIf="!model.dismissBtnText">Vazgeç</span>
+            <span *ngIf="model.dismissBtnText">{{model.dismissBtnText! }}</span>
+        </button>
+        <button class="primary delete-btn" (click)="confirm.emit(true)">
+            <span *ngIf="!model.okBtnText">Sil</span>
+            <span *ngIf="model.okBtnText">{{model.okBtnText! }}</span>
+        </button>
+    </div>
+</div>

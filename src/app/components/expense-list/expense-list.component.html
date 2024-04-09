@@ -1,0 +1,63 @@
+<div class="expenses-wrapper">
+
+    <table class="styled-table">
+
+        <thead>
+            <tr class="table-header">
+                <th style="width: 60px;">Tutar</th>
+                <th>Kategori</th>
+                <th>Ödeme Tipi</th>
+                <th>Kredi Kartı</th>
+                <th>Tarih</th>
+                <th>Açıklama</th>
+                <th>İşlemler</th>
+            </tr>
+        </thead>
+
+        <div *ngIf="expenses && expenses.length == 0" class="empty-img-wrapper">
+            <img src="assets/empty.png" width="38" height="38">
+            <span style="margin-left: 6px;">Harcama bulunamadı..</span>
+        </div>
+
+        <tr style="position: relative; height: 58px;">
+            <div class="total-amount-wrapper">
+                Toplam Tutar : {{numberWithDots(totalAmount)}} ₺
+            </div>
+
+            <div class="payment-type-input-wrapper">
+                <mat-select [(ngModel)]="selectedPaymentType">
+                    <mat-option *ngFor="let paymentType of paymentTypes" [value]="paymentType.data.name"
+                        (click)="onChangeMonthClick()">
+                        {{paymentType.data.name}}
+                    </mat-option>
+                </mat-select>
+                <div class="select-arrow" style="right: 20px !important;"></div>
+            </div>
+
+            <div class="month-input-wrapper">
+                <mat-select [(ngModel)]="selectedMonth">
+                    <mat-option *ngFor="let month of mountList" [value]="month.value" (click)="onChangeMonthClick()">
+                        {{month.label}}
+                    </mat-option>
+                </mat-select>
+                <div class="select-arrow"></div>
+            </div>
+        </tr>
+
+        <tbody>
+
+            <tr *ngFor="let expense of expenses">
+                <td>{{numberWithDots(expense.data.amount)}} ₺</td>
+                <td>{{expense.data.category}}</td>
+                <td>{{expense.data.paymentType}}</td>
+                <td>{{expense.data.creditCard ? expense.data.creditCard : '-'}}</td>
+                <td>{{expense.data.date}}</td>
+                <td>{{expense.data.description}}</td>
+                <td style="text-align: center; padding-right: 16px;">
+                    <img title="Sil" src="assets/delete-icon.png" (click)="onDeleteExpenseClick(expense)"
+                        style="cursor: pointer;">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

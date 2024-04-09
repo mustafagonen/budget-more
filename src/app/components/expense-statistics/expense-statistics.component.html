@@ -1,0 +1,15 @@
+<div class="content-wrapper">
+    <div class="month-input-wrapper">
+        <mat-select [(ngModel)]="selectedMonth">
+            <mat-option *ngFor="let month of mountList" [value]="month.value" (click)="onChangeMonthClick()">
+                {{month.label}}
+            </mat-option>
+        </mat-select>
+        <div class="select-arrow"></div>
+    </div>
+
+    <div *ngIf="chartOptions" id="chart">
+        <apx-chart [colors]="chartOptions.colors" [series]="chartOptions.series!" [chart]="chartOptions.chart!"
+            [labels]="chartOptions.labels!" [responsive]="chartOptions.responsive!"></apx-chart>
+    </div>
+</div>

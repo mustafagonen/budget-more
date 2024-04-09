@@ -1,0 +1,42 @@
+:host {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    background: linear-gradient(45deg, #4158d0, #c850c0);
+}
+
+.content-wrapper {
+    width: 800px;
+    padding-top: 200px;
+}
+
+.tab-container {
+    display: block;
+}
+
+.tab-header {
+    display: flex;
+    justify-content: center;
+}
+
+.tab-item {
+    font-weight: 600;
+    font-size: 18px;
+    width: 150px;
+    color: #d3c6ff;
+    cursor: pointer;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    margin-left: 6px;
+    margin-right: 6px;
+    padding-left: 8px;
+    padding-right: 6px;
+}
+
+.selected-tab {
+    background-color: #d5c9ff;
+    color: #36304a;
+}

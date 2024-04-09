@@ -1,0 +1,15 @@
+<div class="content-wrapper">
+    <div class="tab-container">
+        <div class="tab-header">
+            <div *ngFor="let tab of tabs" class="tab-item" [ngClass]="{'selected-tab': tab.index == selectedTabIndex}"
+                (click)="selectTabClick(tab.index)">
+                {{tab.label}}
+            </div>
+        </div>
+        <div class="tab-content">
+            <mg-expense-list *ngIf="selectedTabIndex == 0"></mg-expense-list>
+            <mg-expense-form *ngIf="selectedTabIndex == 1"></mg-expense-form>
+            <mg-expense-statistics *ngIf="selectedTabIndex == 2"></mg-expense-statistics>
+        </div>
+    </div>
+</div>
